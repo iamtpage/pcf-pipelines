@@ -22,6 +22,8 @@ variable "ert_network" {}
 variable "services_network" {}
 variable "dynamic_services_network" {}
 
+variable "opsmans_domain_or_ip_address" {}
+
 variable "external_network" {}
 // TODO: Can we query external network id from name?
 variable "external_network_id" {}
