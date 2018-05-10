@@ -17,6 +17,11 @@ variable "ert_dns" {}
 variable "services_dns" {}
 variable "dynamic_services_dns" {}
 
+variable "infra_network" {}
+variable "ert_network" {}
+variable "services_network" {}
+variable "dynamic_services_network" {}
+
 variable "external_network" {}
 // TODO: Can we query external network id from name?
 variable "external_network_id" {}
