@@ -54,15 +54,25 @@ resources:
     product_version: {{ert_major_minor_version}}
     sort_by: semver
 
+# S3 backends are less common in enterprise environments compared to source control backends
+# This also means that the "put: terraform-state" instances need their params changed, since
+# S3 resource puts require different keys than git resource puts (file vs repository)
 - name: terraform-state
-  type: s3
+  type: git
   source:
-    disable_ssl: false
-    access_key_id: {{tf_aws_access_key}}
-    secret_access_key: {{tf_aws_secret_key}}
-    endpoint: {{s3_endpoint}}
-    bucket: {{s3_output_bucket}}
-    versioned_file: terraform.tfstate
+    uri: {{tf_state_git_repo}}
+    branch: {{tf_state_git_branch}}
+    skip_ssl_verification: {{tf_state_git_skip_ssl}}
+
+#- name: terraform-state
+#  type: s3
+#  source:
+#    disable_ssl: false
+#    access_key_id: {{tf_aws_access_key}}
+#    secret_access_key: {{tf_aws_secret_key}}
+#    endpoint: {{s3_endpoint}}
+#    bucket: {{s3_output_bucket}}
+#    versioned_file: terraform.tfstate
 
 jobs:
 - name: upload-opsman-image
@@ -97,7 +107,7 @@ jobs:
     put: terraform-state
     tags: [ openstack ]
     params:
-      file: create-infrastructure-output/terraform.tfstate
+      repository: terraform-state
   plan:
   - aggregate:
     - get: pcf-pipelines
@@ -452,7 +462,7 @@ jobs:
     put: terraform-state
     tags: [ openstack ]
     params:
-      file: wipe-output/terraform.tfstate
+      repository: terraform-state
   plan:
   - aggregate:
     - get: pcf-pipelines
