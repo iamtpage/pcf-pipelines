@@ -41,6 +41,10 @@ function main() {
     -var "opsman_public_key=${OPSMAN_PUBLIC_KEY}" \
     -var "opsman_volume_size=${OPSMAN_VOLUME_SIZE}" \
     -var "opsman_flavor=${OPSMAN_FLAVOR}" \
+    -var "infra_network=${INFRA_NETWORK}" \
+    -var "ert_network=${ERT_NETWORK}" \
+    -var "services_network=${SERVICES_NETWORK}" \
+    -var "dynamic_services_network=${DYNAMIC_SERVICES_NETWORK}" \
     -out "terraform.tfplan" \
     -state "terraform-state/terraform.tfstate" \
     "$ROOT/pcf-pipelines/install-pcf/openstack/terraform"
