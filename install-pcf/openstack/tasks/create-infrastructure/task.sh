@@ -45,6 +45,7 @@ function main() {
     -var "ert_network=${ERT_NETWORK}" \
     -var "services_network=${SERVICES_NETWORK}" \
     -var "dynamic_services_network=${DYNAMIC_SERVICES_NETWORK}" \
+    -var "opsman_domain_or_ip_address=${OPSMAN_DOMAIN_OR_IP_ADDRESS}" \
     -out "terraform.tfplan" \
     -state "terraform-state/terraform.tfstate" \
     "$ROOT/pcf-pipelines/install-pcf/openstack/terraform"
