@@ -54,6 +54,11 @@ function main() {
     -state-out "$ROOT/create-infrastructure-output/terraform.tfstate" \
     -parallelism=5 \
     terraform.tfplan
+    
+  # We copy the file to the resource directory since the (now) git resource
+  # doesn't allow us to specify the specific file we want to upload (like the s3 resource did)
+  # "yes |" allows us to copy/overwrite the file without having to answer the prompt to overwrite it
+  yes | cp "$ROOT/create-infrastructure-output/terraform.tfstate" "$ROOT/terraform-state/terraform.tfstate"
 
   local haproxy_floating_ip=$(terraform output \
     -state "create-infrastructure-output/terraform.tfstate" \
