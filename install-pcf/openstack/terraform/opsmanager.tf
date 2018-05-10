@@ -20,6 +20,7 @@ resource "openstack_compute_keypair_v2" "opsman_keypair" {
 
 resource "openstack_networking_floatingip_v2" "opsman_floating_ip" {
   pool = "${var.external_network}"
+  fixed_ip = "${var.opsmans_domain_or_ip_address}"
 }
 
 resource "openstack_compute_floatingip_associate_v2" "opsman_floating_ip_association" {
