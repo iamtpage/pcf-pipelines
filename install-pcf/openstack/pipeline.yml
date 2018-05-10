@@ -133,6 +133,10 @@ jobs:
       EXTERNAL_NETWORK_ID: {{external_network_id}}
       EXTERNAL_NETWORK: {{external_network}}
       OPSMAN_FLAVOR: {{opsman_flavor}}
+      ERT_NETWORK: {{ert_network}}
+      INFRA_NETWORK: {{infra_network}}
+      SERVICES_NETWORK: {{services_network}}
+      DYNAMIC_SERVICES_NETWORK: {{dynamic_services_network}}
 
 - name: configure-director
   serial_groups: [opsman]
