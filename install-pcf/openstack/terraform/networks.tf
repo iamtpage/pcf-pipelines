@@ -1,5 +1,5 @@
 resource "openstack_networking_network_v2" "infra_net" {
-  name = "${var.prefix}-infra-net"
+  name = "${var.prefix}-${var.infra_network}"
   region = "${var.os_region}"
   admin_state_up = "true"
 }
@@ -16,7 +16,7 @@ resource "openstack_networking_subnet_v2" "infra_subnet" {
 }
 
 resource "openstack_networking_network_v2" "ert_net" {
-  name = "${var.prefix}-ert-net"
+  name = "${var.prefix}-${var.ert_network}"
   region = "${var.os_region}"
   admin_state_up = "true"
 }
@@ -33,7 +33,7 @@ resource "openstack_networking_subnet_v2" "ert_subnet" {
 }
 
 resource "openstack_networking_network_v2" "services_net" {
-  name = "${var.prefix}-services-net"
+  name = "${var.prefix}-${var.services_network}"
   region = "${var.os_region}"
   admin_state_up = "true"
 }
@@ -50,7 +50,7 @@ resource "openstack_networking_subnet_v2" "services_subnet" {
 }
 
 resource "openstack_networking_network_v2" "dynamic_services_net" {
-  name = "${var.prefix}-dynamic-services-net"
+  name = "${var.prefix}-${var.dynamic_services_network}"
   region = "${var.os_region}"
   admin_state_up = "true"
 }
