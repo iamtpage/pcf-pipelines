@@ -39,6 +39,7 @@ params:
   ERT_NETWORK:
   SERVICES_NETWORK:
   DYNAMIC_SERVICES_NETWORK:
+  OPSMAN_DOMAIN_OR_IP_ADDRESS
 
 run:
   path: pcf-pipelines/install-pcf/openstack/tasks/create-infrastructure/task.sh
